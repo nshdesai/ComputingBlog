@@ -8,6 +8,7 @@ __pycache__/
 
 # Distribution / packaging
 flaskblog/
+flaskblog2/
 .Python
 build/
 develop-eggs/

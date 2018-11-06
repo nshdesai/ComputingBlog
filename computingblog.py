@@ -25,7 +25,7 @@ freezer = Freezer(app)
 app.config.from_object(__name__)
 
 
-@app.route("/")
+@app.route("/posts")
 def index():
     posts = [p for p in flatpages if p.path.startswith(POST_DIR)]
     posts.sort(key=lambda item: item['date'], reverse=False)
