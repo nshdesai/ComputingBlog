@@ -8,8 +8,9 @@ Author: ndesai (Nishkrit)
 """
 
 import sys
+import os
 
-from flask import Flask, render_template
+from flask import Flask, render_template, send_from_directory
 from flask_flatpages import FlatPages, pygments_style_defs
 from flask_frozen import Freezer
 
@@ -37,6 +38,12 @@ def post(name):
     path = '{}/{}'.format(POST_DIR, name)
     post = flatpages.get_or_404(path)
     return render_template('post.html', post=post)
+
+
+@app.route('/favicon.ico')
+def favicon():
+    return send_from_directory(os.path.join(app.root_path, 'static'),
+                               'favicon.ico',mimetype='image/vnd.microsoft.icon')
 
 
 if __name__ == "__main__":
