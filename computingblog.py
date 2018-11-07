@@ -18,7 +18,7 @@ DEBUG = True
 FLATPAGES_AUTO_RELOAD = DEBUG
 FLATPAGES_EXTENSION = '.md'
 FLATPAGES_ROOT = 'content'
-POST_DIR = 'posts'
+POST_DIR = 'content/posts'
 
 app = Flask(__name__)
 flatpages = FlatPages(app)
@@ -26,6 +26,7 @@ freezer = Freezer(app)
 app.config.from_object(__name__)
 
 
+@app.route('/')
 @app.route("/posts")
 def index():
     posts = [p for p in flatpages if p.path.startswith(POST_DIR)]
@@ -42,11 +43,11 @@ def post(name):
 
 @app.route('/favicon.ico')
 def favicon():
-    return send_from_directory(os.path.join(app.root_path, 'static'),
-                               'favicon.ico',mimetype='image/vnd.microsoft.icon')
+    return send_from_directory(os.path.join(app.root_path, 'static'), 'favicon.ico',mimetype='image/vnd.microsoft.icon')
 
 
 if __name__ == "__main__":
+    print('The app root directory is :', app.root_path)
     if len(sys.argv) > 1 and sys.argv[1] == "build":
         freezer.freeze()
     else:
