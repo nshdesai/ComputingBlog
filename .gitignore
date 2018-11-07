@@ -33,6 +33,12 @@ MANIFEST
 *.manifest
 *.spec
 
+#Bootstrap
+static/bootstrap/css
+
+#Fontawesome stuff
+static/fontawesome-free/css
+
 # Installer logs
 pip-log.txt
 pip-delete-this-directory.txt
