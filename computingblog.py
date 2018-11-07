@@ -18,7 +18,7 @@ DEBUG = True
 FLATPAGES_AUTO_RELOAD = DEBUG
 FLATPAGES_EXTENSION = '.md'
 FLATPAGES_ROOT = 'content'
-POST_DIR = 'content/posts'
+POST_DIR = 'posts'
 
 app = Flask(__name__)
 flatpages = FlatPages(app)
@@ -27,7 +27,7 @@ app.config.from_object(__name__)
 
 
 @app.route('/')
-@app.route("/posts")
+@app.route("/posts/")
 def index():
     posts = [p for p in flatpages if p.path.startswith(POST_DIR)]
     posts.sort(key=lambda item: item['date'], reverse=False)
