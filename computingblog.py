@@ -10,7 +10,7 @@ Author: ndesai (Nishkrit)
 import sys
 import os
 
-from flask import Flask, render_template, send_from_directory
+from flask import Flask, render_template, send_from_directory, url_for
 from flask_flatpages import FlatPages, pygments_style_defs
 from flask_frozen import Freezer
 
