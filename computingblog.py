@@ -10,7 +10,7 @@ Author: ndesai (Nishkrit)
 import sys
 import os
 
-from flask import Flask, render_template, send_from_directory, url_for
+from flask import Flask, render_template, send_from_directory
 from flask_flatpages import FlatPages, pygments_style_defs
 from flask_frozen import Freezer
 
@@ -41,9 +41,20 @@ def post(name):
     return render_template('post.html', post=post)
 
 
+@app.route('/about')
+def about():
+    return render_template('about.html')
+
+
+@app.route('/contact')
+def contact():
+    return render_template('contact.html')
+
+
 @app.route('/favicon.ico')
 def favicon():
-    return send_from_directory(os.path.join(app.root_path, 'static'), 'favicon.ico',mimetype='image/vnd.microsoft.icon')
+    return send_from_directory(os.path.join(app.root_path, 'static'),
+                            'favicon.ico', mimetype='image/vnd.microsoft.icon')
 
 
 if __name__ == "__main__":

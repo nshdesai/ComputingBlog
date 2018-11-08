@@ -1,4 +1,6 @@
 title: Any bugs with the application?
+subtitle: More rigourous testing of application
+author: Nishkrit Desai
 date: 2018-11-06
 
 This is a simple post to test to functionality of the blog. It includes *italics* and **bold**

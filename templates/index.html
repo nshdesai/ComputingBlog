@@ -28,7 +28,7 @@
     <!-- Navigation -->
     <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
       <div class="container">
-        <a class="navbar-brand" href="index.html">Start Bootstrap</a>
+        <a class="navbar-brand" href="/">Bethune Computing Club</a>
         <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
           Menu
           <i class="fas fa-bars"></i>
@@ -42,7 +42,7 @@
               <a class="nav-link" href="about.html">About</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="post.html">Sample Projects and Past Presentations</a>
+              <a class="nav-link" href="post.html">Posts</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="contact.html">Contact</a>
@@ -60,7 +60,7 @@
           <div class="col-lg-8 col-md-10 mx-auto">
             <div class="site-heading">
               <h1>Bethune Computing Club</h1>
-              <span class="subheading">Rekindling the Programmers in all of us.</span>
+              <span class="subheading">Rekindling the Programmer in all of us.</span>
             </div>
           </div>
         </div>
@@ -72,17 +72,20 @@
       <div class="row">
         <div class="col-lg-8 col-md-10 mx-auto">
           {% for post in posts %}
+          <div class="post-preview">
                <a href="{{ url_for('post', name=post.path.replace('posts/', '')) }}">
-                   {{ post.title }}
+                 <h2 class="post-title"> {{ post.title }} </h2>
+                 <h3 class="post-subtitle">{{ post.subtitle }}</h3>
                </a>
-               <small>{{ post.date }}</small>
-           {% endfor %}
+                 <p class="post-meta"> Posted by {{ post.author }} on {{ post.date }}</p>
          </div>
-          <hr>
+         <hr>
+         {% endfor %}
           <!-- Pager -->
           <div class="clearfix">
             <a class="btn btn-primary float-right" href="#">Older Posts &rarr;</a>
           </div>
+         </div>
         </div>
       </div>
     </div>
