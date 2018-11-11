@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 
 """
-Description:
+Description: Manages all the routes for the website
 
 Author: ndesai (Nishkrit)
 """
@@ -58,7 +58,6 @@ def favicon():
 
 
 if __name__ == "__main__":
-    print('The app root directory is :', app.root_path)
     if len(sys.argv) > 1 and sys.argv[1] == "build":
         freezer.freeze()
     else:
