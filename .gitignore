@@ -6,6 +6,9 @@ __pycache__/
 # C extensions
 *.so
 
+#Ignore slack invite link
+slack_link.lnk
+
 # Distribution / packaging
 flaskblog/
 flaskblog2/
