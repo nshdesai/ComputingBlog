@@ -7,20 +7,17 @@ Description: Manages all the routes for the website
 Author: ndesai (Nishkrit)
 """
 
+from constants import *
+from external_redirects import slack_invite
+from process_posts import *
+
 import sys
 import os
 
 from flask import Flask, render_template, send_from_directory, redirect
 from flask_flatpages import FlatPages, pygments_style_defs
 from flask_frozen import Freezer
-from external_redirects import slack_invite
 
-
-DEBUG = True
-FLATPAGES_AUTO_RELOAD = DEBUG
-FLATPAGES_EXTENSION = '.md'
-FLATPAGES_ROOT = 'content'
-POST_DIR = 'posts'
 
 app = Flask(__name__)
 flatpages = FlatPages(app)
@@ -31,21 +28,22 @@ app.config.from_object(__name__)
 @app.route('/')
 @app.route("/posts/")
 def index():
-    posts = [p for p in flatpages if p.path.startswith(POST_DIR)]
-    posts.sort(key=lambda item: item['date'], reverse=False)
+    posts = process_articles(flatpages)
     return render_template('index.html', posts=posts)
 
 
 @app.route('/posts/<name>/')
 def post(name):
     path = '{}/{}'.format(POST_DIR, name)
+    print('The path is: ', path)
     post = flatpages.get_or_404(path)
     return render_template('post.html', post=post)
 
 
 @app.route('/about')
 def about():
-    return render_template('about.html')
+    post = get_about_post(flatpages)
+    return render_template('about.html', post=post)
 
 
 @app.route('/contact')
