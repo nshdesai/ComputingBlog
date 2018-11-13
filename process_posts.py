@@ -16,7 +16,6 @@ def process_articles(flatpages):
     objects. Takes in the flatpages app as a parameter
     """
     posts = [p for p in flatpages if p.path.startswith(POST_DIR) and not p.path.endswith(ABOUT_POST_PATH)]
-    print("The posts are", posts[0].path)
     posts.sort(key=lambda item: item['date'], reverse=False)
     return posts
 
