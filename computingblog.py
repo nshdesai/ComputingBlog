@@ -10,9 +10,11 @@ Author: ndesai (Nishkrit)
 import sys
 import os
 
-from flask import Flask, render_template, send_from_directory
+from flask import Flask, render_template, send_from_directory, redirect
 from flask_flatpages import FlatPages, pygments_style_defs
 from flask_frozen import Freezer
+from external_redirects import slack_invite
+
 
 DEBUG = True
 FLATPAGES_AUTO_RELOAD = DEBUG
@@ -56,6 +58,11 @@ def favicon():
     return send_from_directory(os.path.join(app.root_path, 'static'),
                             'favicon.ico', mimetype='image/vnd.microsoft.icon')
 
+
+@app.route('/slack')
+def slack_link():
+    link = slack_invite()
+    return redirect(link)
 
 if __name__ == "__main__":
     if len(sys.argv) > 1 and sys.argv[1] == "build":
