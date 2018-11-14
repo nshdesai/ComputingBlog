@@ -7,6 +7,8 @@ Description: Helper functions to load external redirect links
 Author: ndesai (Nishkrit)
 """
 
+from constants import PRODUCTION
+
 import os
 
 def slack_invite():
@@ -14,7 +16,7 @@ def slack_invite():
     Returns a string containing the slack invite link. Takes
     no parameters.
     """
-    if production:
+    if PRODUCTION:
         return os.environ['SLACK_INVITE_LINK']
     else:
         with open("slack_link.lnk") as f:

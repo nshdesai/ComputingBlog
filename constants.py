@@ -9,7 +9,7 @@ Author: ndesai (Nishkrit)
 
 
 DEBUG = True
-production = True
+PRODUCTION = True
 FLATPAGES_AUTO_RELOAD = DEBUG
 FLATPAGES_EXTENSION = '.md'
 FLATPAGES_ROOT = 'content'
