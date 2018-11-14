@@ -7,18 +7,17 @@ Description: Manages all the routes for the website
 Author: ndesai (Nishkrit)
 """
 
+from constants import *
+from external_redirects import slack_invite
+from process_posts import *
+
 import sys
 import os
 
-from flask import Flask, render_template, send_from_directory
+from flask import Flask, render_template, send_from_directory, redirect
 from flask_flatpages import FlatPages, pygments_style_defs
 from flask_frozen import Freezer
 
-DEBUG = True
-FLATPAGES_AUTO_RELOAD = DEBUG
-FLATPAGES_EXTENSION = '.md'
-FLATPAGES_ROOT = 'content'
-POST_DIR = 'posts'
 
 app = Flask(__name__)
 flatpages = FlatPages(app)
@@ -29,8 +28,7 @@ app.config.from_object(__name__)
 @app.route('/')
 @app.route("/posts/")
 def index():
-    posts = [p for p in flatpages if p.path.startswith(POST_DIR)]
-    posts.sort(key=lambda item: item['date'], reverse=False)
+    posts = process_articles(flatpages)
     return render_template('index.html', posts=posts)
 
 
@@ -43,7 +41,8 @@ def post(name):
 
 @app.route('/about')
 def about():
-    return render_template('about.html')
+    post = get_about_post(flatpages)
+    return render_template('about.html', post=post)
 
 
 @app.route('/contact')
@@ -56,6 +55,11 @@ def favicon():
     return send_from_directory(os.path.join(app.root_path, 'static'),
                             'favicon.ico', mimetype='image/vnd.microsoft.icon')
 
+
+@app.route('/slack')
+def slack_link():
+    link = slack_invite()
+    return redirect(link)
 
 if __name__ == "__main__":
     if len(sys.argv) > 1 and sys.argv[1] == "build":
