@@ -61,6 +61,12 @@ def slack_link():
     link = slack_invite()
     return redirect(link)
 
+
+@app.route('/content/images/<path:filename>')
+def get_banner_image(filename):
+    return send_from_directory(MEDIA_DIRECTORY, filename)
+
+
 if __name__ == "__main__":
     if len(sys.argv) > 1 and sys.argv[1] == "build":
         freezer.freeze()

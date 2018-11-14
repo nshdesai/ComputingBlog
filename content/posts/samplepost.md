@@ -2,6 +2,7 @@ title: Any bugs with the application?
 subtitle: More rigourous testing of application
 author: Nishkrit Desai
 date: 2018-11-06
+image: post-bg.jpg
 
 <head><meta charset="utf-8" />
 <title>HelloExMachina</title><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>

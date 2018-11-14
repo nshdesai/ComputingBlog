@@ -2,6 +2,7 @@ title: Introduction to CNNs
 subtitle: More rigourous testing of application
 author: Nishkrit Desai
 date: 2018-11-06
+image: post-image.jpg
 
 # Convolutional Neural Networks:  An Introduction
 ----
