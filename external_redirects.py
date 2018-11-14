@@ -14,7 +14,10 @@ def slack_invite():
     Returns a string containing the slack invite link. Takes
     no parameters.
     """
-    with open("slack_link.lnk") as f:
-        link = f.read();
-        f.close()
-    return link
+    if production:
+        return os.environ['SLACK_INVITE_LINK']
+    else:
+        with open("slack_link.lnk") as f:
+            link = f.read();
+            f.close()
+        return link
