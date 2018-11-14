@@ -18,7 +18,6 @@ from flask import Flask, render_template, send_from_directory, redirect
 from flask_flatpages import FlatPages, pygments_style_defs
 from flask_frozen import Freezer
 
-
 app = Flask(__name__)
 flatpages = FlatPages(app)
 freezer = Freezer(app)
@@ -36,7 +35,18 @@ def index():
 def post(name):
     path = '{}/{}'.format(POST_DIR, name)
     post = flatpages.get_or_404(path)
-    return render_template('post.html', post=post)
+    #Find out if there is a notebook included with the markdown file. If so, include it with the webpage
+    #Must have a way of giving the needed notebook to the page, if needed
+    try:
+        return render_template('postNotebook.html', post=post)
+    except:
+        return render_template('post.html', post=post)
+
+
+#Allows the server to find the notebooks and give them to the posts for embedded
+@app.route('/posts/<name>/<notebook>/')
+def notebook(name, notebook):
+    return render_template(notebook)
 
 
 @app.route('/about')
