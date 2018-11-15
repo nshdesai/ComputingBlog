@@ -20,24 +20,26 @@ Inside your directory, you will need to create another one named `templates`, wh
 
 An example of an index html can look like this:
 
-    <html>
-        <body>
-          <header>
-            <div class="containter">
-                <h1 class="logo">Your First Website</h1>
-                <strong><nav>
-                  <ul class="menu">
-                    <li><a href="{{ url_for('home') }}">Home</a></li>
-                  </ul>
-                </nav></strong>
-            </div>
-          </header>
-          <div class="container">
-              {% block content %}
-              {% endblock %}
-          </div>
-        </body>
-    </html>
+<pre>
+    &lt;html&gt;
+    &lt;body&gt;
+      &lt;header&gt;
+        &lt;div class="containter"&gt;
+            &lt;h1 class="logo"&gt;Your First Website&lt;/h1&gt;
+            &lt;strong&gt;&lt;nav&gt;
+              &lt;ul class="menu"&gt;
+                &lt;li&gt;&lt;a href="{{ url_for('home') }}"&gt;Home&lt;/a&gt;&lt;/li&gt;
+              &lt;/ul&gt;
+            &lt;/nav&gt;&lt;/strong&gt;
+        &lt;/div&gt;
+      &lt;/header&gt;
+      &lt;div class="container"&gt;
+          {% block content %}
+          {% endblock %}
+      &lt;/div&gt;
+    &lt;/body&gt;
+    &lt;/html&gt;
+</pre>
 
 ### Writing the Driver Code
 ----
@@ -65,5 +67,5 @@ A simple website can have it look something like this:
     if __name__ = '__main__':
         app.run(debug=True)
 
-It is very important that you _do not_ import **EVERYTHING** from flask, as it is a very big library. The third line tells Flask where to look for templates, static files, and so on. The `@app.route` is a decorator, which allows you to actually implement the html.
+It is very important that you _do not_ import **everything** from flask, as it is a very big library. The third line tells Flask where to look for templates, static files, and so on. The `@app.route` is a decorator, which allows you to actually implement the html.
 You can do a lot of neat things with html, flask and css. This is only the tip of the iceberg.
