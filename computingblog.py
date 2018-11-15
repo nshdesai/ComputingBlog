@@ -43,12 +43,6 @@ def post(name):
         return render_template('post.html', post=post)
 
 
-#Allows the server to find the notebooks and give them to the posts for embedded
-@app.route('/posts/<name>/<notebook>/')
-def notebook(name, notebook):
-    return render_template(notebook)
-
-
 @app.route('/about')
 def about():
     post = get_about_post(flatpages)
@@ -64,6 +58,10 @@ def contact():
 def favicon():
     return send_from_directory(os.path.join(app.root_path, 'static'),
                             'favicon.ico', mimetype='image/vnd.microsoft.icon')
+
+@app.route('/content/notebooks/<path:filename>')
+def getNotebook(filename):
+    return send_from_directory(os.path.join(app.root_path, 'content/notebooks'), filename)
 
 
 @app.route('/slack')
