@@ -35,12 +35,7 @@ def index():
 def post(name):
     path = '{}/{}'.format(POST_DIR, name)
     post = flatpages.get_or_404(path)
-    #Find out if there is a notebook included with the markdown file. If so, include it with the webpage
-    #Must have a way of giving the needed notebook to the page, if needed
-    try:
-        return render_template('postNotebook.html', post=post)
-    except:
-        return render_template('post.html', post=post)
+    return render_template('post.html', post=post)
 
 
 @app.route('/about')
@@ -60,7 +55,7 @@ def favicon():
                             'favicon.ico', mimetype='image/vnd.microsoft.icon')
 
 @app.route('/content/notebooks/<path:filename>')
-def getNotebook(filename):
+def get_notebook(filename):
     return send_from_directory(os.path.join(app.root_path, 'content/notebooks'), filename)
 
 

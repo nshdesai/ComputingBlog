@@ -76,6 +76,11 @@
         <div class="row">
           <div class="col-lg-8 col-md-10 mx-auto">
             {{ post.html|safe }}
+			{% if post.notebook %}
+				<div class = "embed-responsive embed-responsive-4by3">
+					<object data="{{ url_for('get_notebook', filename=post.notebook) }} " class = "embed-responsive-item"> Error with the notebook, or page, or something.</object>
+				</div>
+			{% endif %}
             {{ post.title }}
             {{ post.date }}
           </div>
