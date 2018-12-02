@@ -11,18 +11,21 @@ from constants import *
 from external_redirects import slack_invite
 from process_posts import *
 
+
 import sys
 import os
 
 from flask import Flask, render_template, send_from_directory, redirect
 from flask_flatpages import FlatPages, pygments_style_defs
-from flask_frozen import Freezer
+
 
 
 app = Flask(__name__)
 flatpages = FlatPages(app)
-freezer = Freezer(app)
 app.config.from_object(__name__)
+
+from util.ContentConverter import ContentConverter
+app.url_map.converters['payload'] = ContentConverter
 
 
 @app.route('/')
@@ -56,13 +59,23 @@ def favicon():
                             'favicon.ico', mimetype='image/vnd.microsoft.icon')
 
 
+@app.route('/content/<payload:loadtype>/<path:filename>')
+def get_notebook(loadtype, filename):
+    return send_from_directory(os.path.join(app.root_path, 'content/{}'.format(loadtype)), filename)
+
+
+@app.route('/pygments.css')
+def pygments_css():
+    return pygments_style_defs('tango'), 200, {'Content-Type': 'text/css'}
+
+
 @app.route('/slack')
 def slack_link():
     link = slack_invite()
     return redirect(link)
 
 if __name__ == "__main__":
-    if len(sys.argv) > 1 and sys.argv[1] == "build":
-        freezer.freeze()
-    else:
+    if PRODUCTION:
         app.run(ssl_context='adhoc')
+    else: 
+        app.run(debug=DEBUG)

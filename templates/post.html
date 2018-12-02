@@ -76,8 +76,33 @@
         <div class="row">
           <div class="col-lg-8 col-md-10 mx-auto">
             {{ post.html|safe }}
+<<<<<<< Updated upstream
             {{ post.title }}
             {{ post.date }}
+=======
+			{% if post.notebook %}
+				<div class = "embed-responsive" id = "frameDiv">
+					<iframe src="{{ url_for('get_notebook', filename=post.notebook, loadtype='notebooks') }} " class = "embed-responsive-item" onload = "resize()" id = "frame"> Error with the notebook, or page, or something.</iframe>
+				</div>
+				<script>
+				  function resize() {
+				    //Grab the frame
+					var frame = document.getElementById("frame");
+					//Grab the div
+					var frameDiv = document.getElementById("frameDiv");
+					//Temporarily set the height
+					frame.style.height = '0px';
+					//Grab the actual scrollHeight
+					var sHeight = frame.contentWindow.document.body.scrollHeight + 30 + 'px';
+					//Use the scrollHeight to se the iframe's and div's height
+					//Using paddingBottom breaks the iframe
+					//Must adjust the div, otherwise the iframe will be hidden inside a smaller div
+					frame.style.height = sHeight;
+					frameDiv.style.height = sHeight;
+				  }
+				</script>
+			{% endif %}
+>>>>>>> Stashed changes
           </div>
         </div>
       </div>
