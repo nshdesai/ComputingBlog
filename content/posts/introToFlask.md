@@ -55,17 +55,24 @@ An example of how to tell the html that you are continuing from the index html i
       </div>
     {% endblock %}
 
-the `{% extends %}` basically tells it to pass into the index html, and the ``{% block content %}`` and the `{% endblock %}` indicates the part that will be passed on.
-After creating all the html for you website, you must be wondering "How do I get it working?". This is where flask comes in. Outside of the template directory, create a python file that will create the website for you. In this case, I will call it `app.py`.
+the `{% extends %}` basically tells it to pass into the index html, and the `{% block content %}` and the `{% endblock %}` indicates the part that will be passed on.
+
+After creating all the html for you website, you must be wondering "How do I get it working?". This is where flask comes in.
+Outside of the template directory, create a python file that will create the website for you. In this case, I will call it `app.py`.
+
 A simple website can have it look something like this:
 
     from flask import Flask, render_template
+
     app = Flask(__name__)
+
     @app.route('/')
     def index()
         return render_template('index.html')
+
     if __name__ = '__main__':
         app.run(debug=True)
 
-It is very important that you _do not_ import **everything** from flask, as it is a very big library. The third line tells Flask where to look for templates, static files, and so on. The `@app.route` is a decorator, which allows you to actually implement the html.
+It is very important that you _do not_ import **everything** from flask, as it is a very big library.
+The third line tells Flask where to look for templates, static files, and so on. The `@app.route` is a decorator, which allows you to actually implement the html.
 You can do a lot of neat things with html, flask and css. This is only the tip of the iceberg.

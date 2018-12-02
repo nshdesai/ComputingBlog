@@ -9,6 +9,13 @@ __pycache__/
 #Ignore slack invite link
 slack_link.lnk
 
+#Ignore editor files
+.vscode/
+.atom/
+
+#Ignore vim-swap files
+*.swp
+
 # Distribution / packaging
 flaskblog/
 flaskblog2/
