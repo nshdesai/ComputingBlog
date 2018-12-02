@@ -79,11 +79,10 @@
         <div class="row">
           <div class="col-lg-10 col-md-10 mx-auto">
             {{ post.html|safe }}
-            {{ post.title }}
-            {{ post.date }}
-			{% if post.notebook %}
+
+			{% if post.embed %}
 				<div class = "embed-responsive" id = "frameDiv">
-          <iframe src="{{ url_for('get_notebook', filename=post.notebook, loadtype='notebooks') }} " class = "embed-responsive-item" onload = "resize()" id = "frame">
+          <iframe src="{{ url_for('get_content', filename=post.embed, loadtype=post.embed_type) }}" class = "embed-responsive-item" onload = "resize()" id = "frame">
             Error with the notebook, or page, or something.
           </iframe>
 				</div>

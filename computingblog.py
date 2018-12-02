@@ -57,7 +57,7 @@ def favicon():
 
 
 @app.route('/content/<payload:loadtype>/<path:filename>')
-def get_notebook(loadtype, filename):
+def get_content(loadtype, filename):
     return send_from_directory(os.path.join(app.root_path, 'content/{}'.format(loadtype)), filename)
 
 
