@@ -56,16 +56,6 @@ def favicon():
                             'favicon.ico', mimetype='image/vnd.microsoft.icon')
 
 
-@app.route('/content/notebooks/<path:filename>')
-def get_notebook(filename):
-    return send_from_directory(os.path.join(app.root_path, 'content/notebooks'), filename)
-
-
-@app.route('/pygments.css')
-def pygments_css():
-    return pygments_style_defs('tango'), 200, {'Content-Type': 'text/css'}
-
-
 @app.route('/content/<payload:loadtype>/<path:filename>')
 def get_notebook(loadtype, filename):
     return send_from_directory(os.path.join(app.root_path, 'content/{}'.format(loadtype)), filename)

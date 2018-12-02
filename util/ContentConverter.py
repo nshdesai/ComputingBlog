@@ -19,8 +19,5 @@ class ContentConverter(BaseConverter):
         if value in self.get_contents():
             return value
 
-    def to_url(self, value):
-        return BaseConverter.to_url(value)
-
     def get_contents(self):
         return next(os.walk('content'))[1]

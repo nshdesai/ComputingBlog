@@ -83,7 +83,7 @@
             {{ post.date }}
 			{% if post.notebook %}
 				<div class = "embed-responsive" id = "frameDiv">
-          <iframe src="{{ url_for('get_notebook', filename=post.notebook) }} " class = "embed-responsive-item" onload = "resize()" id = "frame">
+          <iframe src="{{ url_for('get_notebook', filename=post.notebook, loadtype='notebooks') }} " class = "embed-responsive-item" onload = "resize()" id = "frame">
             Error with the notebook, or page, or something.
           </iframe>
 				</div>
