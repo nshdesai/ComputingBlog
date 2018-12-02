@@ -1,4 +1,4 @@
-#! usr/bin/env python3
+#! usr/bin/env python
 # -*- coding: utf-8 -*-
 
 """
@@ -15,3 +15,4 @@ FLATPAGES_EXTENSION = '.md'
 FLATPAGES_ROOT = 'content'
 POST_DIR = 'posts'
 ABOUT_POST_PATH = 'about'
+MEDIA_DIRECTORY = 'content/images'

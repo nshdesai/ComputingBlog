@@ -10,6 +10,7 @@ Suppose you work at _Intel_ and you were tasked with programming a robotic arm t
 solders on an Integrated Circuit (IC) onto Motherboards. One of the challenges that you
 would face along the way would be to find the most efficient path (or tour) that the robot
 could take to solder all the contact points of the component onto the PCB.
+
 This backstory leads us to our problem: Tour Optimization
 
 _Problem_: Tour Optimization for Robotic Arms

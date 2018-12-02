@@ -20,7 +20,10 @@
 
     <!-- Custom styles for this template -->
     <link href="{{ url_for('static', filename='css/clean-blog.min.css') }}" rel="stylesheet">
-
+	
+	<!-- Load Pygments -->
+	<link rel="stylesheet" href="{{ url_for('pygments_css') }}">
+	
   </head>
 
   <body>
@@ -53,14 +56,14 @@
     </nav>
 
     <!-- Page Header -->
-    <header class="masthead" style="background-image: url('{{ url_for('static', filename='img/post-image.jpg') }}')">
+    <header class="masthead" style="background-image: url('{{ url_for('get_banner_image', filename=post.image) }}')">
       <div class="overlay"></div>
       <div class="container">
         <div class="row">
           <div class="col-lg-8 col-md-10 mx-auto">
             <div class="post-heading">
               <h1>{{ post.title }}</h1>
-              <!--<h2 class="subheading"></h2>-->
+              <h2 class="subheading">{{ post.subtitle }}</h2>
               <span class="meta">Posted by
                 <a href="#">{{ post.author }}</a>
                 {{ post.date }}</span>
@@ -74,15 +77,15 @@
     <article>
       <div class="container">
         <div class="row">
-          <div class="col-lg-8 col-md-10 mx-auto">
+          <div class="col-lg-10 col-md-10 mx-auto">
             {{ post.html|safe }}
-<<<<<<< Updated upstream
             {{ post.title }}
             {{ post.date }}
-=======
 			{% if post.notebook %}
 				<div class = "embed-responsive" id = "frameDiv">
-					<iframe src="{{ url_for('get_notebook', filename=post.notebook, loadtype='notebooks') }} " class = "embed-responsive-item" onload = "resize()" id = "frame"> Error with the notebook, or page, or something.</iframe>
+          <iframe src="{{ url_for('get_notebook', filename=post.notebook) }} " class = "embed-responsive-item" onload = "resize()" id = "frame">
+            Error with the notebook, or page, or something.
+          </iframe>
 				</div>
 				<script>
 				  function resize() {
@@ -102,7 +105,6 @@
 				  }
 				</script>
 			{% endif %}
->>>>>>> Stashed changes
           </div>
         </div>
       </div>

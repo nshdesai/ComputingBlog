@@ -10,14 +10,17 @@ Author: ndesai (Nishkrit)
 
 from constants import *
 
+
 def process_articles(flatpages):
     """
     Process all the regular post articles and returns a list of flatpages
     objects. Takes in the flatpages app as a parameter
     """
     posts = [p for p in flatpages if p.path.startswith(POST_DIR) and not p.path.endswith(ABOUT_POST_PATH)]
-    posts.sort(key=lambda item: item['date'], reverse=False)
+    posts.sort(key=lambda item: item['date'], reverse=True)
+
     return posts
+
 
 def get_about_post(flatpages):
     """
