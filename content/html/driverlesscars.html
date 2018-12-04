@@ -6,10 +6,16 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/pixi.js/4.7.1/pixi.min.js"></script>
 </head>
 <body>
-    <div id="env"></div>
+    <div class="canvas" id="canvas"></div>
     <script src="https://cdn.jsdelivr.net/combine/npm/metacar@0.0.1,npm/metacar@0.1.0"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@0.11.6"> </script>
     <script type="text/javascript" src="/content/js/driverlesscars.js">
     </script>
 
+    <div class="body_container">
+        <h3 id="trainingProgress"></h3>
+        <h3 style="float: left">Current state (Lidar points)</h3><br><br><br>
+        <div id="realtime_viewer" style="float: left"></div>
+    </div>
 </body>
 </html>

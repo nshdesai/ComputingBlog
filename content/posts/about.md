@@ -4,4 +4,4 @@ author: nshdesai
 date: 2018-11-05
 image: about-bg.jpg
 
-Everything about what _we_ do goes in here.
+Welcome to Bethune Computing Club's official blog!

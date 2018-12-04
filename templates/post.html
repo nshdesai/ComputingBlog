@@ -80,7 +80,8 @@
           <div class="col-lg-10 col-md-10 mx-auto">
             {{ post.html|safe }}
 
-			{% if post.embed %}
+      {% if post.embed %}
+      <center>
 				<div class = "embed-responsive" id = "frameDiv">
           <iframe src="{{ url_for('get_content', filename=post.embed, loadtype=post.embed_type) }}" class = "embed-responsive-item" onload = "resize()" id = "frame">
             Error with the notebook, or page, or something.
@@ -95,14 +96,15 @@
 					//Temporarily set the height
 					frame.style.height = '0px';
 					//Grab the actual scrollHeight
-					var sHeight = frame.contentWindow.document.body.scrollHeight + 30 + 'px';
+					var sHeight = frame.contentWindow.document.body.scrollHeight + 50 + 'px';
 					//Use the scrollHeight to se the iframe's and div's height
 					//Using paddingBottom breaks the iframe
 					//Must adjust the div, otherwise the iframe will be hidden inside a smaller div
 					frame.style.height = sHeight;
 					frameDiv.style.height = sHeight;
 				  }
-				</script>
+        </script>
+        </center>
 			{% endif %}
           </div>
         </div>
