@@ -56,7 +56,7 @@
     </nav>
 
     <!-- Page Header -->
-    <header class="masthead" style="background-image: url('{{ url_for('get_banner_image', filename=post.image) }}')">
+    <header class="masthead" style="background-image: url('{{ url_for('get_content', filename=post.image, loadtype='images') }}')">
       <div class="overlay"></div>
       <div class="container">
         <div class="row">
