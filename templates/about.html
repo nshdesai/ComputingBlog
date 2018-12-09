@@ -6,4 +6,4 @@
 </div>
 {% endblock header %}
 
-{% block content %}{{ post.html|safe }}{% endblock content %}
+{% block content %}{{ post.html|safe|e }}{% endblock content %}
