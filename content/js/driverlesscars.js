@@ -5,6 +5,8 @@ const env = new metacar.env("canvas", level);
 // Load it
 //env.load();
 
+import {PolicyAgent} from 'driverless_agent.js';
+
 // Load the agent we created
 var agent = new PolicyAgent(env);
 
