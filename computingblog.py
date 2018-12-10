@@ -10,18 +10,19 @@ Author: ndesai (Nishkrit)
 from constants import *
 from external_redirects import slack_invite
 from process_posts import *
+from util.ContentConverter import ContentConverter
 
-import sys
 import os
 
 from flask import Flask, render_template, send_from_directory, redirect, Markup
 from flask_flatpages import FlatPages, pygments_style_defs
-from flask_frozen import Freezer
+
 
 app = Flask(__name__)
 flatpages = FlatPages(app)
-freezer = Freezer(app)
 app.config.from_object(__name__)
+
+app.url_map.converters['payload'] = ContentConverter
 
 
 @app.route('/')
@@ -54,9 +55,10 @@ def favicon():
     return send_from_directory(os.path.join(app.root_path, 'static'),
                             'favicon.ico', mimetype='image/vnd.microsoft.icon')
 
-@app.route('/content/notebooks/<path:filename>')
-def get_notebook(filename):
-    return send_from_directory(os.path.join(app.root_path, 'content/notebooks'), filename)
+
+@app.route('/content/<payload:loadtype>/<path:filename>')
+def get_content(loadtype, filename):
+    return send_from_directory(os.path.join(app.root_path, 'content/{}'.format(loadtype)), filename)
 
 
 @app.route('/pygments.css')
@@ -76,8 +78,7 @@ def get_banner_image(filename):
 
 
 if __name__ == "__main__":
-    if len(sys.argv) > 1 and sys.argv[1] == "build":
-        freezer.freeze()
-    else:
-        #app.run(debug=True)
+    if PRODUCTION:
         app.run(ssl_context='adhoc')
+    else:
+        app.run(debug=DEBUG)        
