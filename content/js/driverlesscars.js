@@ -1,5 +1,5 @@
 // Select a level
-const level = metacar.level.level1;
+const level = metacar.level.level2;
 // Create an instance of the environment
 const env = new metacar.env("canvas", level);
 // Load it
@@ -35,4 +35,4 @@ env.load().then(() => {
         agent.restore();
     });
 
-})
+});
