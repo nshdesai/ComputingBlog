@@ -76,8 +76,8 @@ def get_banner_image(filename):
 
 
 if __name__ == "__main__":
-    if len(sys.argv) > 1 and sys.argv[1] == "build":
-        freezer.freeze()
-    else:
-        #app.run(debug=True)
+    if PRODUCTION:
         app.run(ssl_context='adhoc')
+    else:
+        app.run(debug=DEBUG)
+        
