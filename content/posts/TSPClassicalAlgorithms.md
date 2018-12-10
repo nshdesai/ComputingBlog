@@ -11,10 +11,12 @@ solders on an Integrated Circuit (IC) onto Motherboards. One of the challenges t
 would face along the way would be to find the most efficient path (or tour) that the robot
 could take to solder all the contact points of the component onto the PCB.
 
-_This_ backstory leads us to our problem: Tour Optimization
+This backstory leads us to our problem: Tour Optimization
 
 _Problem_: Tour Optimization for Robotic Arms
+
 _Input_: As set `S` containing `n` point on a plane (these are the contact points)
+
 _Output_: What is the shortest cycle tour that visits each point in set `S`?
 
 Now that we have a problem statement, we can _better_ understand the scope of the problem.

@@ -18,21 +18,16 @@ function setup(){
     water = 0;
     water_triangle = initTriangle();
     flow_rates = flowRate();
-    createCanvas(800, 600);
-    resizeCanvas(800*numRows/10, 600*numRows/10);
+    createCanvas(800, 400);
+    // resizeCanvas(800*numRows/10, 600*numRows/10);
     background(51);
     frameRate(60);
-    drawTriangle();
-    slider = createSlider(1, 15, 14, 1);
-    slider.value(3);
-    slider.position(700, 50);
 }
 function draw(){
-
+    background(51);
+    drawTriangle();
     numRows = 6;//slider.value();
-    textSize(32);
-    fill(0, 102, 153);
-    scale(0.5, 0.5);
+    // scale(0.5, 0.5);
     for (var row = 0; row < numRows; row++){
         var numWhite = (numRows - row) / 2;
         for (var b = 0; b <= row; b++ ){
@@ -67,6 +62,10 @@ function draw(){
         //setup();
     }
     water = calculateWater();
+
+    textSize(32);
+    fill(56, 247, 156);
+    text("Water used: " + water.toPrecision(3), 500, 100);
 }
 
 /**

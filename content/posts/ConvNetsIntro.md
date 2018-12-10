@@ -3,7 +3,8 @@ subtitle: Using Handwritten digits to teach computers how to see
 author: Nishkrit Desai
 date: 2018-11-04
 image: astro-post-pg.jpg
-notebook: HelloExMachina.html
+embed: HelloExMachina.html
+embed_type: notebooks
 
 This post is for anyone who wants to take their first steps into _Artificial Intelligence_.
 
