@@ -79,7 +79,7 @@ for postpath in glob.iglob(path):
                 #Create the Jinja include call
                 function_call = temp_line[:10] + " \'" + os.path.join("templates", temp_line[11:parameter_start_index]) + ".html\' %}"
                 #parameter is the filename, the second word in function_call is the loadtype for get_content()
-                parameter = '\"' + temp_line[parameter_start_index+1:temp_line.index(')')].strip() + '\"'
+                parameter = temp_line[parameter_start_index+1:temp_line.index(')')].strip()
                 #Render jinja to turn {% include <loadtype>.html %} into the corresponding html
                 #Use templates called <loadtype>.html, calling get_content('content/<loadtype>/<filename>')
                 template = env.from_string(function_call)
