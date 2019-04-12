@@ -17,8 +17,9 @@ author: Nishkrit Desai
 Most of it. Vehicles today treat the road as a video game, and by learning how to play this game
 they become really good drivers. 
 
-### How the sausage is made
+### How our system makes decisions
 ----
+Every time the robot takes an action (a), in state (s), it receives a reward (r). In its head, it constantly updates its memory of rewards for taking certain actions in those states. This is called the policy. The policy is essentially how the agent makes decisions. All decisions are based around predicted rewards. Let’s pretend the robot has a huge table in its head. The table stores all of the states, with all possible actions, and predicted rewards for that state-action pair. At the beginning of training, all predicted rewards are set to 0.
 
 ### The Technology (Reinforcement learning)
 ----

@@ -10,10 +10,10 @@ var agent = new PolicyAgent(env);
 
 env.loop(() => {
     let state = env.getState().lidar;
-    displayState("realtime_viewer", state, 200, 200);
+    // displayState("realtime_viewer", state, 200, 200);
     let scores = agent.getStateValues(state);
     let reward = env.getLastReward();
-    displayScores("realtime_viewer", scores, reward, ["Top", "Left", "Right"]);
+    // displayScores("realtime_viewer", scores, reward, ["Top", "Left", "Right"]);
 });
 
 // Once the environment is loaded, Add methods to listen to the activity
