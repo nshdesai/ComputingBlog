@@ -1,12 +1,26 @@
-title: Brief Intro to the AI behind Self Driving Cars
-subtitle: How can cars navigate themselves in a complex environment?
-date: 2018-11-15
-author: Lucy An
+title: Dismantling the Black box of Autonomous Driving
+subtitle: Teaching vehicles to see a rapidly changing enviroment the way humans do
+date: 2019-01-25
+author: Nishkrit Desai
 
-_Note_: This post is a summary of the discussion about the
-how self driving cars work and how they can be implemented ... 
 
-### What is Reinforcement Learning?
+### Objective
+----
+* How much of autonomous driving is reality?  
+* What underlying technology is driving this revolution? (no pun intended)
+* How can I make one? (I will attempt to do this _live_ in the next session)
+
+
+### How real is autonomous driving?
+----
+
+Most of it. Vehicles today treat the road as a video game, and by learning how to play this game
+they become really good drivers. 
+
+### How the sausage is made
+----
+
+### The Technology (Reinforcement learning)
 ----
 Reinforcement learning is the process of the computer teaching _itself_ to complete a certain task.
 Unlike other neural networks, this is based **entirely** on rewards.
@@ -28,11 +42,11 @@ This "agent" does **not** refer to the secret agents that you see in action movi
 
 ![Image](https://www.kdnuggets.com/images/reinforcement-learning-fig1-700.jpg)
 
-### Training the AI
+### Training the Agent
 ----
 
 In our driverless car simulation, the car needs to first **crash** multiple times to learn to drive on the road. The car receives more points the longer it stays "alive", and with enough trials, the AI will be so good that it will never crash in the **same** environment.
 
-### When then, how does the model train?
+### Well then, how does the model perform?
 ----
 How the AI is trained is by using features. Not having enough features will make the AI not "smart" enough, while **too much** will cause the learning to be extremely slow. It is also different from the traditional neural network in terms of its network structure. While before, there was the same amount of neurons in every layer. Reinforcement learning, however, have multiple neurons in the previous layer sending to a common neuron in its next layer. This allows for faster processing speed as well.
