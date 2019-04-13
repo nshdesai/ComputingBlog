@@ -1,7 +1,7 @@
 title: Making your first website with Flask
 subtitle: How hard could it be to make a website with Python?
 date: 2018-11-05
-author: Eric Zhang
+author: Nishkrit Desai, Eric Zhang
 image: post-bg.jpg
 
 ### Setting up your environment
@@ -12,8 +12,20 @@ Check out this [link](http://timmyreilly.azurewebsites.net/python-flask-windows-
 
 Now that your environment is set up. We can begin to write code.
 
+Here are some things you'll need:
+
+* A Text Editor
+* A Working version of Python (Preferrably 3.x)
+
+Once you have these things set up you can go ahead install flask using `pip` (or your preferred python package manager).
+We will not go into how to install flask here, but [Google](www.google.com) should be able help you out. 
+
 ### Getting Started
 ----
+
+You can think of Flask as a template-spitting-out machine (for simplicity). All Flask does is, it takes HTML templates
+that could be used as, well templates, for a family of web pages, and it parses in the content into these templates and spits it out
+as a web page. To give flask these magical powers we must organise our files in a particular way...
 
 First, you must create a directory that will contain all of your files for the website. This ensures that your other files will not interfere.
 Inside your directory, you will need to create another one named `templates`, which contains all of your html
@@ -73,6 +85,16 @@ A simple website can have it look something like this:
     if __name__ = '__main__':
         app.run(debug=True)
 
-It is very important that you _do not_ import **everything** from flask, as it is a very big library.
 The third line tells Flask where to look for templates, static files, and so on. The `@app.route` is a decorator, which allows you to actually implement the html.
 You can do a lot of neat things with html, flask and css. This is only the tip of the iceberg.
+
+### A note about wildcard imports
+
+Eric:
+> It is very important that you _do not_ import **everything** from flask, as it is a very big library.
+
+Nish:
+> Well...Python is actually smart enough to *not* import everything from flask with a wildcard import, however it is always better to avoid it
+
+
+**Fun Fact** : This website is _also_ built with bare bones `Flask`

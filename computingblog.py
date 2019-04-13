@@ -56,9 +56,9 @@ def favicon():
                             'favicon.ico', mimetype='image/vnd.microsoft.icon')
 
 
-@app.route('/content/<payload:loadtype>/<path:filename>')
+@app.route('/content/<path:loadtype>/<path:filename>')
 def get_content(loadtype, filename):
-    return send_from_directory(os.path.join(app.root_path, 'content/{}'.format(loadtype)), filename)
+    return send_from_directory('content/{}'.format(loadtype), filename)
 
 
 @app.route('/pygments.css')
@@ -70,11 +70,6 @@ def pygments_css():
 def slack_link():
     link = slack_invite()
     return redirect(link)
-
-
-@app.route('/content/images/<path:filename>')
-def get_banner_image(filename):
-    return send_from_directory(MEDIA_DIRECTORY, filename)
 
 
 if __name__ == "__main__":
