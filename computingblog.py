@@ -76,4 +76,4 @@ if __name__ == "__main__":
     if PRODUCTION:
         app.run(ssl_context='adhoc')
     else:
-        app.run(debug=DEBUG)
+        app.run(debug=DEBUG)        
